@@ -1,5 +1,6 @@
-import { getSearchMovies, getPopularMovies } from "apiService/apiService";
+import { getSearchMovies } from "apiService/apiService";
 import { Home } from "page/Home/Home";
+import { MovieDetails } from "page/MovieDetails/MovieDetails";
 import { Movies } from "page/Movies/Movies";
 import { NavLink, Route, Routes } from "react-router-dom";
 
@@ -19,11 +20,13 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/movies" element={<Movies />} />
+        <Route path="/movies/:id" element={<MovieDetails />} />
         <Route path="*" element={<Home />} />
       </Routes>
 
       <button onClick={() => getSearchMovies("cat")}>Search</button>
-      <button onClick={()=>getPopularMovies("cat")}>Popularity</button>
     </div>
   );
 };
+
+
