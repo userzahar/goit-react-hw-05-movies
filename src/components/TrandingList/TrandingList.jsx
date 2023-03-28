@@ -1,5 +1,8 @@
+import { useEffect } from "react"
 
-export const TrandingList = (movies) => {
+export function TrandingList({ movies }) {
+console.log("🚀 ~ movies:", movies)
+
     return <ul>
         {movies.map(movie => <li key={movie.id}>{movie.id}</li>)}
     </ul>
