@@ -11,7 +11,6 @@ export const Home = () => {
     setIsLoading(true);
     getPopularMovies(page)
         .then(res => {
-            console.log("🚀 ~ res:", res)
         setMovies(res.data.results);
       })
       .catch(error => console.log(error))
@@ -19,10 +18,10 @@ export const Home = () => {
   }, [page]);
 
   return (
-    <main>
+    <>
       <h2>Tranding today</h2>
       <MovieList movies={movies} />
-    </main>
+    </>
   );
 };
 // !поставити заглушку isLoading

@@ -17,14 +17,15 @@ export const App = () => {
               </NavLink>
           </nav>
       </header>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/movies" element={<Movies />} />
-        <Route path="/movies/:id" element={<MovieDetails />} />
-        <Route path="*" element={<Home />} />
-      </Routes>
-
-      <button onClick={() => getSearchMovies("cat")}>Search</button>
+      <main>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/movies" element={<Movies />} />
+          <Route path="/movies/:id" element={<MovieDetails />} />
+          <Route path="*" element={<Home />} />
+        </Routes>
+      </main>
+      <button onClick={() => getSearchMovies("cat",1)}>Search</button>
     </div>
   );
 };

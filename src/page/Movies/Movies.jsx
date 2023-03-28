@@ -1,4 +1,7 @@
 
 export const Movies = () => {
-    return<div>🛰</div>
+    return <>
+        <div>🛰</div>
+    </>
+        
 }

@@ -2,30 +2,22 @@ import { getProductById } from "apiService/apiService";
 import { useEffect } from "react";
 import { useState } from "react";
 import { NavLink, useParams } from "react-router-dom";
-
+const IMAGE_NONE = "https://via.placeholder.com/200x300";
+const IMAGE_DEFAULT = "https://image.tmdb.org/t/p/w200";
 export const MovieDetails = () => {
     const [movie, setMovie] = useState({});
     const { id } = useParams();
-    console.log("💚 ~ id:", id)
     useEffect(() => {
-        const product = getProductById(id)
+        getProductById(id)
             .then(refs => {
-                console.log(refs.data)
-                console.log("🚀 ~ product:", refs.data)
                 setMovie(refs.data)
-                // movie.genres.map(gen => {
-                 
-            //   })
             })
         .catch(er => console.log(er));
     }, [])
-    console.log("💦", movie?.genres?.map(gen => {
-        return gen.name;
-    }).join());
   return (
-      <main>
+      <>
           <NavLink to='/'>{`<-`}go Back</NavLink>
-      <img src="https://via.placeholder.com/960x240" alt="" />
+          <img src={movie.poster_path ? (IMAGE_DEFAULT+movie.poster_path) : IMAGE_NONE } alt="" />
       <section>
         <h1>
             {movie.title}
@@ -47,6 +39,6 @@ export const MovieDetails = () => {
                 <li><NavLink>Reviews</NavLink></li>
               </ul>
           </section>
-    </main>
+    </>
   );
 };
