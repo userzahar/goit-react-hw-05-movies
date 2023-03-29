@@ -1,7 +1,7 @@
 import { getProductById } from "apiService/apiService";
 import { useEffect } from "react";
 import { useState } from "react";
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink, Outlet, useParams } from "react-router-dom";
 const IMAGE_NONE = "https://via.placeholder.com/200x300";
 const IMAGE_DEFAULT = "https://image.tmdb.org/t/p/w200";
 export const MovieDetails = () => {
@@ -10,6 +10,8 @@ export const MovieDetails = () => {
     useEffect(() => {
         getProductById(id)
             .then(refs => {
+                console.log("🔻🔹 ~ refs:", refs)
+                
                 setMovie(refs.data)
             })
         .catch(er => console.log(er));
@@ -23,7 +25,7 @@ export const MovieDetails = () => {
             {movie.title}
         </h1>
         <p>
-          User score: {movie.vote_average}
+          User score: {Math.round(movie.vote_average)*10}%
               </p>
               <h2>Overview</h2>
               <p>{movie.overview}</p>
@@ -35,9 +37,10 @@ export const MovieDetails = () => {
           <section>
               <p>Additional information</p>
               <ul>
-                <li><NavLink>Cast</NavLink></li>
+                <li><NavLink to="cast">Cast</NavLink></li>
                 <li><NavLink>Reviews</NavLink></li>
               </ul>
+             <Outlet />
           </section>
     </>
   );
