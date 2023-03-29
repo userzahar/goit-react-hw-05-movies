@@ -38,7 +38,7 @@ export const MovieDetails = () => {
               <p>Additional information</p>
               <ul>
                 <li><NavLink to="cast">Cast</NavLink></li>
-                <li><NavLink>Reviews</NavLink></li>
+                <li><NavLink to='reviews'>Reviews</NavLink></li>
               </ul>
              <Outlet />
           </section>
