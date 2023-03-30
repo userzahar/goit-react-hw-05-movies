@@ -6,6 +6,8 @@ export const Home = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
+  console.log("🚀 ~ setPage:", setPage);
+  console.log("🚀 ~ isLoading:", isLoading);
 
   useEffect(() => {
     setIsLoading(true);
