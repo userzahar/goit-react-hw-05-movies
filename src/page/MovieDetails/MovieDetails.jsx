@@ -15,7 +15,7 @@ export const MovieDetails = () => {
                 setMovie(refs.data)
             })
         .catch(er => console.log(er));
-    }, [])
+    }, [id])
   return (
       <>
           <NavLink to='/'>{`<-`}go Back</NavLink>

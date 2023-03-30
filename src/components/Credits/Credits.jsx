@@ -15,7 +15,7 @@ export function Credits(){
                 console.log(res.data.cast)
                 return setPerson(res.data.cast)})
             .catch(er=>console.log(er))
-    },[])
+    },[id])
     
     return <ul>
         {person.map(({name,character,profile_path,id})=> <li key={id}>
