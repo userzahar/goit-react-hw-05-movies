@@ -1,7 +1,9 @@
 
 export const Movies = () => {
     return <>
-        <div>🛰</div>
+        <label htmlFor="">
+            <input type="text" name='search' /> 
+        </label>
     </>
         
 }
