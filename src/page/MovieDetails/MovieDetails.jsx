@@ -1,18 +1,14 @@
 import { getProductById } from "apiService/apiService";
-import React, { useEffect } from "react";
-import { useMemo } from "react";
+import { useEffect } from "react";
+
 import { useState } from "react";
 import { NavLink, Outlet, useLocation, useParams } from "react-router-dom";
 const IMAGE_NONE = "https://via.placeholder.com/200x300";
 const IMAGE_DEFAULT = "https://image.tmdb.org/t/p/w200";
 export const MovieDetails = () => {
     const [movie, setMovie] = useState({});
-    // const [urlBack, setUrlBack] = useState();
     const { id } = useParams();
     const location = useLocation();
-    console.log("💙 ~ location:", location.state?.from.pathname);
-    // useEffect(() => { setUrlBack(location.state?.from.pathname) }, [])
-    const urlBack = React.useMemo(() => location.state?.from.pathname,[location.state?.from.pathname]);
     useEffect(() => {
         getProductById(id)
             .then(refs => {
@@ -25,7 +21,7 @@ export const MovieDetails = () => {
 
   return (
       <>
-          <NavLink to={urlBack}>{`<-`}go Back</NavLink>
+          <NavLink to={location.state?.from.pathname ?? '/'}>{`<-`}go Back</NavLink>
           <img src={movie.poster_path ? (IMAGE_DEFAULT+movie.poster_path) : IMAGE_NONE } alt="" />
       <section>
         <h1>
