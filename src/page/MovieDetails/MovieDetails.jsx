@@ -6,9 +6,11 @@ const IMAGE_NONE = "https://via.placeholder.com/200x300";
 const IMAGE_DEFAULT = "https://image.tmdb.org/t/p/w200";
 export const MovieDetails = () => {
     const [movie, setMovie] = useState({});
+    const [urlBack, setUrlBack] = useState();
     const { id } = useParams();
     const location = useLocation();
-    console.log("💙 ~ location:", location.state.from.pathname);
+    console.log("💙 ~ location:", location.state?.from.pathname);
+    useEffect(()=>{setUrlBack(location.state?.from.pathname)},[])
     useEffect(() => {
         getProductById(id)
             .then(refs => {
@@ -18,9 +20,10 @@ export const MovieDetails = () => {
             })
         .catch(er => console.log(er));
     }, [id])
+
   return (
       <>
-          <NavLink to={location.state.from.pathname}>{`<-`}go Back</NavLink>
+          <NavLink to={urlBack}>{`<-`}go Back</NavLink>
           <img src={movie.poster_path ? (IMAGE_DEFAULT+movie.poster_path) : IMAGE_NONE } alt="" />
       <section>
         <h1>
@@ -39,8 +42,8 @@ export const MovieDetails = () => {
           <section>
               <p>Additional information</p>
               <ul>
-                <li><NavLink to="cast">Cast</NavLink></li>
-                <li><NavLink to='reviews'>Reviews</NavLink></li>
+                <li><NavLink to="cast" state={{ from:location}}>Cast</NavLink></li>
+                <li><NavLink to='reviews' state={{ from:location}}>Reviews</NavLink></li>
               </ul>
              <Outlet />
           </section>
