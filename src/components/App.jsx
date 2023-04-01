@@ -2,7 +2,7 @@
 import { Home } from "page/Home/Home";
 import { MovieDetails } from "page/MovieDetails/MovieDetails";
 import { Movies } from "page/Movies/Movies";
-import { NavLink, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { HeaderStyled, NavLinkStyle } from "./App.styled";
 import { Credits } from "./Credits/Credits";
 import { Reviews } from "./Reviews/Reviews";
