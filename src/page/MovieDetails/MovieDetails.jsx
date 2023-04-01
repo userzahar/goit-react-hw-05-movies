@@ -10,7 +10,7 @@ export const MovieDetails = () => {
     const { id } = useParams();
     const location = useLocation();
     console.log("💙 ~ location:", location.state?.from.pathname);
-    useEffect(()=>{setUrlBack(location.state?.from.pathname)},[])
+    useEffect(() => {setUrlBack(location.state?.from.pathname)}, [])
     useEffect(() => {
         getProductById(id)
             .then(refs => {
