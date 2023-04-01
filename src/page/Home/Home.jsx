@@ -26,4 +26,3 @@ export const Home = () => {
     </>
   );
 };
-// !поставити заглушку isLoading
