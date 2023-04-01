@@ -1,12 +1,14 @@
 import { getProductById } from "apiService/apiService";
 import { useEffect } from "react";
 import { useState } from "react";
-import { NavLink, Outlet, useParams } from "react-router-dom";
+import { NavLink, Outlet, useLocation, useParams } from "react-router-dom";
 const IMAGE_NONE = "https://via.placeholder.com/200x300";
 const IMAGE_DEFAULT = "https://image.tmdb.org/t/p/w200";
 export const MovieDetails = () => {
     const [movie, setMovie] = useState({});
     const { id } = useParams();
+    const location = useLocation();
+    console.log("💙 ~ location:", location);
     useEffect(() => {
         getProductById(id)
             .then(refs => {
