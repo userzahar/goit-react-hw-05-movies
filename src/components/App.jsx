@@ -1,4 +1,4 @@
-import { getSearchMovies } from "apiService/apiService";
+
 import { Home } from "page/Home/Home";
 import { MovieDetails } from "page/MovieDetails/MovieDetails";
 import { Movies } from "page/Movies/Movies";
@@ -32,7 +32,6 @@ export const App = () => {
           </Route>
         </Routes>
       </main>
-      <button onClick={() => getSearchMovies("cat",1)}>Search</button>
     </div>
   );
 };
