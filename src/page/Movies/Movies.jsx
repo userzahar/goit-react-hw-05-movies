@@ -14,6 +14,7 @@ export const Movies = () => {
     }
     const hendleSubmit = (e) => {
         e.preventDefault();
+
         getSearchMovies(query).then(res => {
             console.log("🚀 ~ res:", res.data.results)
             setMovies(res.data.results)

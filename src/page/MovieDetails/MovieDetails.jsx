@@ -1,4 +1,5 @@
 import { getProductById } from "apiService/apiService";
+import { useRef } from "react";
 import { useEffect } from "react";
 
 import { useState } from "react";
@@ -9,6 +10,9 @@ export const MovieDetails = () => {
     const [movie, setMovie] = useState({});
     const { id } = useParams();
     const location = useLocation();
+    const backLinkLocation = useRef(location.state?.from.pathname ?? '/')
+    console.log("🚀 ~ location.state?.from.pathname:", location.state?.from.pathname)
+    console.log("🚀 ~ backLinkLocation:", backLinkLocation)
     useEffect(() => {
         getProductById(id)
             .then(refs => {
@@ -21,7 +25,7 @@ export const MovieDetails = () => {
 
   return (
       <>
-          <NavLink to={location.state?.from.pathname ?? '/'}>{`<-`}go Back</NavLink>
+          <NavLink to={backLinkLocation.current}>{`<-`}go Back</NavLink>
           <img src={movie.poster_path ? (IMAGE_DEFAULT+movie.poster_path) : IMAGE_NONE } alt="" />
       <section>
         <h1>
