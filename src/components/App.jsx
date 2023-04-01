@@ -3,22 +3,23 @@ import { Home } from "page/Home/Home";
 import { MovieDetails } from "page/MovieDetails/MovieDetails";
 import { Movies } from "page/Movies/Movies";
 import { NavLink, Route, Routes } from "react-router-dom";
+import { HeaderStyled, NavLinkStyle } from "./App.styled";
 import { Credits } from "./Credits/Credits";
 import { Reviews } from "./Reviews/Reviews";
 
 export const App = () => {
   return (
     <div>
-      <header>
+      <HeaderStyled>
           <nav>
-              <NavLink to="/" end>
+              <NavLinkStyle to="/" end>
                 Home
-              </NavLink>
-              <NavLink to="/movies">
+              </NavLinkStyle>
+              <NavLinkStyle to="/movies">
                 Movies
-              </NavLink>
+              </NavLinkStyle>
           </nav>
-      </header>
+      </HeaderStyled>
       <main>
         <Routes>
           <Route path="/"  >
