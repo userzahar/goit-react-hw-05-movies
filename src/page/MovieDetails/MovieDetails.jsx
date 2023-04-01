@@ -8,7 +8,7 @@ export const MovieDetails = () => {
     const [movie, setMovie] = useState({});
     const { id } = useParams();
     const location = useLocation();
-    console.log("💙 ~ location:", location);
+    console.log("💙 ~ location:", location.state.from.pathname);
     useEffect(() => {
         getProductById(id)
             .then(refs => {
@@ -20,7 +20,7 @@ export const MovieDetails = () => {
     }, [id])
   return (
       <>
-          <NavLink to='/'>{`<-`}go Back</NavLink>
+          <NavLink to={location.state.from.pathname}>{`<-`}go Back</NavLink>
           <img src={movie.poster_path ? (IMAGE_DEFAULT+movie.poster_path) : IMAGE_NONE } alt="" />
       <section>
         <h1>
