@@ -1,5 +1,6 @@
 import { getSearchMovies } from "apiService/apiService";
 import { MovieList } from "components/TrandingList/TrandingList";
+import { useEffect } from "react";
 import { useState } from "react";
 import { useSearchParams } from "react-router-dom"
 
@@ -9,18 +10,26 @@ export const Movies = () => {
     const [movies, setMovies] = useState([]);
     const updateQuery = (e) => {
         e.target.value.length !== 0
-        ? setSearchParams({ query: e.target.value })
-        : setSearchParams({})
+            ? setSearchParams({ query: e.target.value })
+            : setSearchParams({});
+        
     }
     const hendleSubmit = (e) => {
         e.preventDefault();
-
         getSearchMovies(query).then(res => {
             console.log("🚀 ~ res:", res.data.results)
             setMovies(res.data.results)
-        }).catch(er=>console.log(er))
+        }).catch(er => console.log(er))
     }
-    console.log("🚀 ~ query:", query)
+    useEffect(() => {
+        if (query !== '') {
+            getSearchMovies(query).then(res => {
+                console.log("🚀 ~ res:", res.data.results)
+                setMovies(res.data.results)
+            }).catch(er => console.log(er))
+            
+        }
+    }, [query]);
     return <> <form onSubmit={hendleSubmit}> <label><input
         type="text"
         name={query}

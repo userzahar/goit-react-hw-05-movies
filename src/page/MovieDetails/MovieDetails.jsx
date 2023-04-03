@@ -4,14 +4,17 @@ import { useEffect } from "react";
 
 import { useState } from "react";
 import { NavLink, Outlet, useLocation, useParams } from "react-router-dom";
+import { BackLinkStyled } from "./MovieDetails.styled";
 const IMAGE_NONE = "https://via.placeholder.com/200x300";
 const IMAGE_DEFAULT = "https://image.tmdb.org/t/p/w200";
 export const MovieDetails = () => {
     const [movie, setMovie] = useState({});
     const { id } = useParams();
     const location = useLocation();
-    const backLinkLocation = useRef(location.state?.from.pathname ?? '/')
-    console.log("🚀 ~ location.state?.from.pathname:", location.state?.from.pathname)
+    console.log("🚀 ~ location:", location)
+    const backLinkLocation = useRef(location.state?.from.pathname+location.state?.from.search ?? '/');
+    
+    console.log("💞💞🤍 ~ loca:", location.state?.from.pathname+location.state?.from.search)
     console.log("🚀 ~ backLinkLocation:", backLinkLocation)
     useEffect(() => {
         getProductById(id)
@@ -25,8 +28,8 @@ export const MovieDetails = () => {
 
   return (
       <>
-          <NavLink to={backLinkLocation.current}>{`<-`}go Back</NavLink>
-          <img src={movie.poster_path ? (IMAGE_DEFAULT+movie.poster_path) : IMAGE_NONE } alt="" />
+          <BackLinkStyled to={backLinkLocation.current}>{`⏪`}go Back</BackLinkStyled>
+          <img width='300' src={movie.poster_path ? (IMAGE_DEFAULT+movie.poster_path) : IMAGE_NONE } alt="" />
       <section>
         <h1>
             {movie.title}
