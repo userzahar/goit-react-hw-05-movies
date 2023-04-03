@@ -8,14 +8,12 @@ export const Movies = () => {
     const [searchParams, setSearchParams] = useSearchParams();
     const query = searchParams.get('query') ?? '';
     const [movies, setMovies] = useState([]);
-    const updateQuery = (e) => {
-        e.target.value.length !== 0
-            ? setSearchParams({ query: e.target.value })
-            : setSearchParams({});
-        
-    }
     const hendleSubmit = (e) => {
         e.preventDefault();
+        console.dir(e.currentTarget.elements.search.value);
+        e.currentTarget.elements.search.value.length !== 0
+        ? setSearchParams({ query: e.currentTarget.elements.search.value })
+        : setSearchParams({});
         getSearchMovies(query).then(res => {
             console.log("🚀 ~ res:", res.data.results)
             setMovies(res.data.results)
@@ -32,9 +30,7 @@ export const Movies = () => {
     }, [query]);
     return <> <form onSubmit={hendleSubmit}> <label><input
         type="text"
-        name={query}
-        onChange={updateQuery}
-        
+        name='search'
     />
     </label>
         <button type='submit' >Search</button>
