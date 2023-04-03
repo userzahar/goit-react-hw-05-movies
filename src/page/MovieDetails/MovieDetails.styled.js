@@ -18,3 +18,14 @@ export const BackLinkStyled = styled(NavLink)`
     background-color: #555;
   }
 `;
+
+export const SectionStyled = styled.section`
+  margin-left: 12px;
+  display: flex;
+  flex-direction: column;
+  max-width: 75%;
+`;
+
+export const ContainerStyle = styled.main`
+  display: flex;
+`;

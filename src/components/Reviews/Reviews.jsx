@@ -21,6 +21,4 @@ export function Reviews(){
             <p>{content}</p>
         </li>))}
     </ul>
-    
-    // <p>We don`t have any reviews for this movie</p>
 }

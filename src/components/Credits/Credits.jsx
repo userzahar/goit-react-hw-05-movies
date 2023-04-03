@@ -16,13 +16,13 @@ export function Credits(){
                 return setPerson(res.data.cast)})
             .catch(er=>console.log(er))
     },[id])
-    
+    console.log("💛",person)
     return <ul>
-        {person.map(({name,character,profile_path,id})=> <li key={id}>
+        {person.length !== 0 ? person.map(({name,character,profile_path,id})=> <li key={id}>
                     <p>{name}</p>
                    <p>Character: {character}</p>
                     <img src={profile_path ? (IMAGE_PERSON+profile_path) : IMAGE_NONE} alt={name} width="90" height="120" />
-                </li>)}
+                </li>) : <p>We don`t have any casts for this movie</p>}
     </ul> 
 }
-//  
+ 

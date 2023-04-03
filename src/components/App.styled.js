@@ -31,7 +31,3 @@ export const NavLinkStyle = styled(NavLink)`
     border-bottom: 2px solid #fff;
   }
 `;
-export const MainStyle = styled.main`
-  display: flex;
-  flex-direction: column;
-`;

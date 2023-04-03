@@ -4,7 +4,7 @@ import { useEffect } from "react";
 
 import { useState } from "react";
 import { NavLink, Outlet, useLocation, useParams } from "react-router-dom";
-import { BackLinkStyled } from "./MovieDetails.styled";
+import { BackLinkStyled, ContainerStyle, SectionStyled } from "./MovieDetails.styled";
 const IMAGE_NONE = "https://via.placeholder.com/200x300";
 const IMAGE_DEFAULT = "https://image.tmdb.org/t/p/w200";
 export const MovieDetails = () => {
@@ -26,11 +26,13 @@ export const MovieDetails = () => {
         .catch(er => console.log(er));
     }, [id])
 
-  return (
-      <>
+  return (<>
+      <ContainerStyle>
+        <SectionStyled>
           <BackLinkStyled to={backLinkLocation.current}>{`⏪`}go Back</BackLinkStyled>
-          <img width='300' src={movie.poster_path ? (IMAGE_DEFAULT+movie.poster_path) : IMAGE_NONE } alt="" />
-      <section>
+              <img width='300' src={movie.poster_path ? (IMAGE_DEFAULT + movie.poster_path) : IMAGE_NONE} alt="" />
+        </SectionStyled>
+      <SectionStyled>
         <h1>
             {movie.title}
         </h1>
@@ -43,7 +45,8 @@ export const MovieDetails = () => {
               <p>{movie?.genres?.map(gen => {
         return gen.name;
     }).join(' ')}</p>
-          </section>
+          </SectionStyled>
+          </ContainerStyle>
           <section>
               <p>Additional information</p>
               <ul>
