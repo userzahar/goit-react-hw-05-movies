@@ -8,7 +8,6 @@ const IMAGE_PERSON = "https://image.tmdb.org/t/p/w200";
 export function Credits(){
     const[person, setPerson]=useState([])
     const { id } = useParams();
-    console.log("💢 ~ id:", id)
     useEffect(()=>{
         getCast(id)
             .then(res=> {
@@ -16,7 +15,6 @@ export function Credits(){
                 return setPerson(res.data.cast)})
             .catch(er=>console.log(er))
     },[id])
-    console.log("💛",person)
     return <ul>
         {person.length !== 0 ? person.map(({name,character,profile_path,id})=> <li key={id}>
                     <p>{name}</p>

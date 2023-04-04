@@ -11,11 +11,12 @@ export const MovieDetails = () => {
     const [movie, setMovie] = useState({});
     const { id } = useParams();
     const location = useLocation();
-    console.log("🚀 ~ location:", location)
-    const backLinkLocation = useRef(location.state?.from.pathname+location.state?.from.search ?? '/');
+  const backLinkLocation = useRef(location.state ? location.state?.from.pathname + location.state?.from.search : '/');
+    console.log("🤎 ~ backLink:", backLinkLocation)
+    console.log("💙 ~ location.state?:", location.state?.from.pathname)
+  console.log("💛 ~ location:", location.pathname)
+  
     
-    console.log("💞💞🤍 ~ loca:", location.state?.from.pathname+location.state?.from.search)
-    console.log("🚀 ~ backLinkLocation:", backLinkLocation)
     useEffect(() => {
         getProductById(id)
             .then(refs => {
@@ -50,8 +51,8 @@ export const MovieDetails = () => {
           <section>
               <p>Additional information</p>
               <ul>
-                <li><NavLink to="cast" state={{ from:location}}>Cast</NavLink></li>
-                <li><NavLink to='reviews' state={{ from:location}}>Reviews</NavLink></li>
+                <li><NavLink to="cast">Cast</NavLink></li>
+                <li><NavLink to='reviews'>Reviews</NavLink></li>
               </ul>
              <Outlet />
           </section>

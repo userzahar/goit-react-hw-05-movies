@@ -9,7 +9,6 @@ export function Reviews(){
     useEffect(()=>{
         getReviews(id)
             .then(res=>{
-                console.log("s",res.data.results)
             setPerson(res.data.results)
         })
             .catch(er=>console.log(er))
