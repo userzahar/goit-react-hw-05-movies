@@ -11,6 +11,7 @@ export function Credits(){
     useEffect(()=>{
         getCast(id)
             .then(res=> {
+
                 return setPerson(res.data.cast)})
             .catch(er=>console.log(er))
     },[id])

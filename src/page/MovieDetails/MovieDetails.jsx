@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { getProductById } from "apiService/apiService";
 import { useRef } from "react";
 import { useEffect } from "react";
@@ -6,7 +7,7 @@ import { NavLink, Outlet, useLocation, useParams } from "react-router-dom";
 import { BackLinkStyled, ContainerStyle, SectionStyled } from "./MovieDetails.styled";
 const IMAGE_NONE = "https://via.placeholder.com/200x300";
 const IMAGE_DEFAULT = "https://image.tmdb.org/t/p/w200";
-export const MovieDetails = () => {
+ const MovieDetails = () => {
     const [movie, setMovie] = useState({});
     const { id } = useParams();
     const location = useLocation();
@@ -45,9 +46,12 @@ export const MovieDetails = () => {
               <ul>
                 <li><NavLink to="cast">Cast</NavLink></li>
                 <li><NavLink to='reviews'>Reviews</NavLink></li>
-              </ul>
-             <Outlet />
+      </ul>
+        <Suspense fallback={<div>Loading...</div>}>
+            <Outlet />
+        </Suspense>
           </section>
     </>
   );
 };
+export default MovieDetails

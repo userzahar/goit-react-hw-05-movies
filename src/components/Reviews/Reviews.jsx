@@ -12,9 +12,11 @@ export function Reviews(){
             setPerson(res.data.results)
         })
             .catch(er=>console.log(er))
-    },[id])
+    }, [id])
+    console.log("🚀 ~ person:", person)
+    
     return <ul>
-        {person.length === 0  ? <p>We don`t have any reviews for this movie</p> 
+        {person.length === 0 ? <p>We don`t have any reviews for this movie</p> 
         : (person.map(({author,content, id})=> <li key={id}>
             <p>{author}</p>
             <p>{content}</p>

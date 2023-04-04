@@ -1,12 +1,15 @@
+import { lazy } from "react";
 
-import { Home } from "page/Home/Home";
-import { MovieDetails } from "page/MovieDetails/MovieDetails";
+import Home from "page/Home/Home";
+// import { MovieDetails } from "page/MovieDetails/MovieDetails";
 import { Movies } from "page/Movies/Movies";
 import { Route, Routes } from "react-router-dom";
 import { HeaderStyled, NavLinkStyle } from "./App.styled";
 import { Credits } from "./Credits/Credits";
 import { Reviews } from "./Reviews/Reviews";
+import { Suspense } from "react";
 
+const MovieDetails =lazy(()=>import('page/MovieDetails/MovieDetails'))
 export const App = () => {
   return (
     <div>
@@ -21,6 +24,7 @@ export const App = () => {
           </nav>
       </HeaderStyled>
       <main>
+        <Suspense fallback={<div>Loading...</div>}>
         <Routes>
           <Route path="/"  >
                 <Route index element={<Home />} />
@@ -31,7 +35,8 @@ export const App = () => {
                         <Route path="reviews" element={<Reviews/>}/>
                 </Route>
           </Route>
-        </Routes>
+          </Routes>
+          </Suspense>
       </main>
     </div>
   );
