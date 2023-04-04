@@ -1,7 +1,6 @@
 import { getProductById } from "apiService/apiService";
 import { useRef } from "react";
 import { useEffect } from "react";
-
 import { useState } from "react";
 import { NavLink, Outlet, useLocation, useParams } from "react-router-dom";
 import { BackLinkStyled, ContainerStyle, SectionStyled } from "./MovieDetails.styled";
@@ -12,16 +11,9 @@ export const MovieDetails = () => {
     const { id } = useParams();
     const location = useLocation();
   const backLinkLocation = useRef(location.state ? location.state?.from.pathname + location.state?.from.search : '/');
-    console.log("🤎 ~ backLink:", backLinkLocation)
-    console.log("💙 ~ location.state?:", location.state?.from.pathname)
-  console.log("💛 ~ location:", location.pathname)
-  
-    
     useEffect(() => {
         getProductById(id)
-            .then(refs => {
-                console.log("🔻🔹 ~ refs:", refs)
-                
+            .then(refs => {      
                 setMovie(refs.data)
             })
         .catch(er => console.log(er));

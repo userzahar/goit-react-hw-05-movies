@@ -10,19 +10,16 @@ export const Movies = () => {
     const [movies, setMovies] = useState([]);
     const hendleSubmit = (e) => {
         e.preventDefault();
-        console.dir(e.currentTarget.elements.search.value);
         e.currentTarget.elements.search.value.length !== 0
         ? setSearchParams({ query: e.currentTarget.elements.search.value })
         : setSearchParams({});
         getSearchMovies(query).then(res => {
-            console.log("🚀 ~ res:", res.data.results)
             setMovies(res.data.results)
         }).catch(er => console.log(er))
     }
     useEffect(() => {
         if (query !== '') {
             getSearchMovies(query).then(res => {
-                console.log("🚀 ~ res:", res.data.results)
                 setMovies(res.data.results)
             }).catch(er => console.log(er))
             
